@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manage My Registration - Hyundai Mitja Marató Barcelona by Brooks</title>
+<link rel="icon" type="image/png" href="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/HMMB-favicon-150x150.png">
+<link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --primary: #1a1a2e;
+    --accent: #00afbf;
+    --accent-hover: #0096a4;
+    --accent2: #e63946;
+    --white: #ffffff;
+    --dark-gray: #2b2b2b;
+    --mid-gray: #666;
+    --border: #e0e0e0;
+    --font: 'Didact Gothic', sans-serif;
+    --max-w: 1200px;
+    --header-h: 70px;
+    --success: #28a745;
+  }
+  body {
+    font-family: var(--font);
+    color: var(--dark-gray);
+    background: #f4f6f8;
+    line-height: 1.6;
+  }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+  .bcn-bar {
+    background: #000; color: #fff; font-size: 12px; padding: 6px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .bcn-bar a { color: #fff; display: flex; align-items: center; gap: 6px; }
+  .bcn-bar img { height: 22px; }
+  .site-header {
+    position: sticky; top: 0; z-index: 1000; background: var(--white);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+  .header-inner {
+    max-width: var(--max-w); margin: 0 auto; padding: 0 24px; height: var(--header-h);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .header-logo img { height: 48px; }
+  .nav-menu { display: flex; align-items: center; gap: 4px; }
+  .nav-menu li { position: relative; }
+  .nav-menu li a, .nav-menu li > span {
+    display: block; padding: 8px 14px; font-size: 14px; font-weight: 500;
+    cursor: pointer; border-radius: 4px; transition: color 0.2s, background 0.2s;
+  }
+  .nav-menu li a:hover, .nav-menu li > span:hover { color: var(--accent); background: #f0fbfc; }
+  .nav-dropdown {
+    display: none; position: absolute; top: 100%; left: 0;
+    background: var(--white); min-width: 220px; box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    border-radius: 6px; overflow: hidden; z-index: 100;
+  }
+  .nav-dropdown li a { padding: 10px 18px; font-size: 13px; border-bottom: 1px solid #f0f0f0; }
+  .nav-menu li:hover .nav-dropdown { display: block; }
+  .btn-register {
+    background: var(--accent); color: var(--white); padding: 10px 22px;
+    font-size: 13px; font-weight: 700; border-radius: 4px;
+  }
+  .page-banner {
+    background: linear-gradient(135deg, #101026 0%, #1a1a3a 100%);
+    color: var(--white); padding: 50px 24px; text-align: left;
+  }
+  .banner-container { max-width: var(--max-w); margin: 0 auto; }
+  .breadcrumb { font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 12px; }
+  .breadcrumb a { text-decoration: underline; }
+  .page-title { font-size: 36px; margin-bottom: 8px; }
+
+  .content-section { max-width: 900px; margin: 40px auto 60px; padding: 0 20px; }
+  .card {
+    background: var(--white); border-radius: 12px; padding: 36px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06); margin-bottom: 24px;
+  }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group input, .form-group select {
+    padding: 12px 14px; border: 1px solid var(--border); border-radius: 6px; font-size: 14px;
+  }
+  .btn-submit {
+    background: var(--accent); color: var(--white); border: none; padding: 13px 26px;
+    border-radius: 6px; font-weight: bold; cursor: pointer; transition: background 0.2s;
+  }
+  .btn-submit:hover { background: var(--accent-hover); }
+
+  .portal-dashboard { display: none; }
+  .dashboard-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; margin-top: 24px; }
+  .bib-badge {
+    background: #00afbf; color: white; display: inline-block; padding: 4px 12px;
+    border-radius: 4px; font-weight: bold; font-size: 13px; margin-bottom: 12px;
+  }
+  .service-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px; border: 1px solid #edf2f7; border-radius: 8px; margin-bottom: 12px;
+  }
+  .service-item:hover { border-color: var(--accent); }
+  .btn-add {
+    background: #f0fbfc; color: var(--accent); border: 1px solid var(--accent);
+    padding: 6px 14px; border-radius: 4px; font-weight: bold; cursor: pointer;
+  }
+  .btn-add.added { background: var(--success); color: white; border-color: var(--success); }
+
+  .site-footer {
+    background: #0d0d1a; color: #fff; padding: 40px 24px; font-size: 13px; text-align: center;
+  }
+  @media (max-width: 768px) {
+    .dashboard-grid, .form-grid { grid-template-columns: 1fr; }
+    .nav-menu { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bcn-bar">
+  <a href="https://www.barcelona.cat/en/" target="_blank">
+    <img src="https://www.barcelona.cat/assets/images/brand/banner/2025/logo-ajbcn.svg" alt="Barcelona">
+    <span>Barcelona City Council</span>
+  </a>
+  <div>
+    <a href="index.html" style="color:#aaa;">EN</a>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo">
+      <img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/logo-hunday-mitjamaratobarcelona-bybrooks-g.png" alt="Logo">
+    </a>
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="change-owner.html">Change owner</a></li>
+        <li><a href="manage-registration.html" style="color:var(--accent); font-weight:bold;">Manage registration</a></li>
+        <li><a href="parunda.html">PaRunda</a></li>
+        <li><a href="course.html">Course</a></li>
+        <li><a href="results.html">Results</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="change-owner.html" class="btn-register">Transfer Bib</a>
+  </div>
+</header>
+
+<section class="page-banner">
+  <div class="banner-container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> / Registrations / Manage registration
+    </div>
+    <h1 class="page-title">Manage My Registration</h1>
+    <p>Check your runner bib status, update personal options, or add official race extras.</p>
+  </div>
+</section>
+
+<main class="content-section">
+
+  <!-- Search Card -->
+  <div class="card" id="searchCard">
+    <h2 style="font-size:22px; margin-bottom:8px;">Access Your Runner Portal</h2>
+    <p style="color:var(--mid-gray); margin-bottom:24px;">Enter your Registration Locator and Runner Email to view your active booking.</p>
+
+    <form onsubmit="handleLogin(event)">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Registration Locator <span style="color:var(--accent2)">*</span></label>
+          <input type="text" id="regCode" placeholder="MMBCN-2027-8491" value="MMBCN-2027-8491" required>
+        </div>
+        <div class="form-group">
+          <label>Runner Email <span style="color:var(--accent2)">*</span></label>
+          <input type="email" id="regEmail" placeholder="runner@example.com" value="carlos.ruiz@example.com" required>
+        </div>
+      </div>
+      <div style="margin-top:24px; display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size:12px; color:var(--mid-gray);">💡 Demo credentials pre-filled</span>
+        <button type="submit" class="btn-submit">Open My Registration</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Dashboard Portal -->
+  <div class="portal-dashboard" id="portalDashboard">
+    <div class="card">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
+        <div>
+          <span class="bib-badge">CONFIRMED BIB # 08491</span>
+          <h2 style="font-size:24px;" id="runnerDisplayName">Carlos Ruiz Mendoza</h2>
+          <p style="color:var(--mid-gray); font-size:14px;">Hyundai Mitja Marató Barcelona by Brooks 2027</p>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <a href="change-owner.html" class="btn-submit" style="background:#e63946; font-size:13px; padding:10px 16px;">Change Owner</a>
+          <button class="btn-submit" onclick="window.print()" style="font-size:13px; padding:10px 16px;">Download Voucher</button>
+        </div>
+      </div>
+
+      <div class="dashboard-grid">
+        <!-- Details Column -->
+        <div>
+          <h3 style="font-size:16px; margin-bottom:12px; border-bottom:1px solid #eee; padding-bottom:6px;">Registration Information</h3>
+          <table style="width:100%; font-size:14px; border-collapse:collapse;">
+            <tr style="border-bottom:1px solid #f0f0f0; height:38px;">
+              <td style="color:var(--mid-gray);">Wave & Starting Box:</td>
+              <td><strong>Box 2 (Yellow - 1h25' to 1h35')</strong></td>
+            </tr>
+            <tr style="border-bottom:1px solid #f0f0f0; height:38px;">
+              <td style="color:var(--mid-gray);">T-Shirt Size:</td>
+              <td>
+                <select id="shirtSelect" style="padding:4px 8px; border-radius:4px; font-size:13px;" onchange="alert('T-Shirt size preference saved!')">
+                  <option value="M">Men - M (Selected)</option>
+                  <option value="S">Men - S</option>
+                  <option value="L">Men - L</option>
+                  <option value="XL">Men - XL</option>
+                </select>
+              </td>
+            </tr>
+            <tr style="border-bottom:1px solid #f0f0f0; height:38px;">
+              <td style="color:var(--mid-gray);">Bib Pick-up Location:</td>
+              <td><strong>Expo Sports (Fira de Barcelona - Montjuïc)</strong></td>
+            </tr>
+            <tr style="border-bottom:1px solid #f0f0f0; height:38px;">
+              <td style="color:var(--mid-gray);">Event Date:</td>
+              <td><strong>Sunday, February 14, 2027 - 08:30 AM</strong></td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- Extra Services Column -->
+        <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:18px;">
+          <h3 style="font-size:15px; margin-bottom:12px;">Add Extra Services</h3>
+          <div class="service-item">
+            <div>
+              <p style="font-weight:bold; font-size:13px;">Medal Engraving</p>
+              <p style="font-size:11px; color:var(--mid-gray);">Name & finish time (+€7.00)</p>
+            </div>
+            <button class="btn-add" id="btnMedal" onclick="toggleExtra(this, 'Medal Engraving', 7)">+ Add</button>
+          </div>
+
+          <div class="service-item">
+            <div>
+              <p style="font-weight:bold; font-size:13px;">Official Photo Pack</p>
+              <p style="font-size:11px; color:var(--mid-gray);">All high-res HD photos (+€15.00)</p>
+            </div>
+            <button class="btn-add" id="btnPhoto" onclick="toggleExtra(this, 'HD Photo Pack', 15)">+ Add</button>
+          </div>
+
+          <div class="service-item">
+            <div>
+              <p style="font-weight:bold; font-size:13px;">Cancellation Insurance</p>
+              <p style="font-size:11px; color:var(--mid-gray);">100% refund guarantee (+€9.00)</p>
+            </div>
+            <button class="btn-add added" disabled>✓ Active</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <p>&copy; 2027 Hyundai Mitja Marató Barcelona by Brooks. All rights reserved.</p>
+</footer>
+
+<script>
+  function handleLogin(e) {
+    e.preventDefault();
+    document.getElementById('searchCard').style.display = 'none';
+    document.getElementById('portalDashboard').style.display = 'block';
+  }
+
+  function toggleExtra(btn, name, price) {
+    if (btn.classList.contains('added')) {
+      btn.classList.remove('added');
+      btn.textContent = '+ Add';
+      alert(name + ' removed.');
+    } else {
+      btn.classList.add('added');
+      btn.textContent = '✓ Added';
+      alert(name + ' (€' + price + ') successfully added to your registration package!');
+    }
+  }
+</script>
+
+</body>
+</html>

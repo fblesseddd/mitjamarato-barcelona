@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PaRunda by Brooks - Hyundai Mitja Marató Barcelona</title>
+<link rel="icon" type="image/png" href="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/HMMB-favicon-150x150.png">
+<link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --primary: #1a1a2e;
+    --accent: #00afbf;
+    --accent2: #e63946;
+    --white: #ffffff;
+    --dark-gray: #2b2b2b;
+    --mid-gray: #666;
+    --font: 'Didact Gothic', sans-serif;
+    --max-w: 1200px;
+    --header-h: 70px;
+  }
+  body { font-family: var(--font); color: var(--dark-gray); background: #fdfdfd; line-height: 1.6; }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+  .bcn-bar { background: #000; color: #fff; font-size: 12px; padding: 6px 24px; display: flex; align-items: center; justify-content: space-between; }
+  .bcn-bar a { color: #fff; display: flex; align-items: center; gap: 6px; }
+  .site-header { position: sticky; top: 0; z-index: 1000; background: var(--white); box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+  .header-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; height: var(--header-h); display: flex; align-items: center; justify-content: space-between; }
+  .header-logo img { height: 48px; }
+  .nav-menu { display: flex; align-items: center; gap: 4px; }
+  .nav-menu li a { display: block; padding: 8px 14px; font-size: 14px; font-weight: 500; border-radius: 4px; }
+  .nav-menu li a:hover { color: var(--accent); background: #f0fbfc; }
+  .btn-register { background: var(--accent); color: var(--white); padding: 10px 22px; font-size: 13px; font-weight: 700; border-radius: 4px; }
+  
+  .hero-banner {
+    background: linear-gradient(rgba(16,16,38,0.7), rgba(16,16,38,0.85)), url('https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/banner-web-parunda-1.jpg') center/cover no-repeat;
+    color: var(--white); padding: 80px 24px; text-align: center;
+  }
+  .hero-banner h1 { font-size: 46px; margin-bottom: 12px; }
+  .hero-banner p { font-size: 18px; max-width: 650px; margin: 0 auto 24px; color: rgba(255,255,255,0.9); }
+  .btn-cta {
+    background: #ff5722; color: #fff; padding: 14px 32px; border-radius: 30px; font-size: 16px; font-weight: bold;
+    display: inline-flex; align-items: center; gap: 10px; transition: transform 0.2s, background 0.2s;
+  }
+  .btn-cta:hover { transform: scale(1.04); background: #e64a19; }
+
+  .content-section { max-width: var(--max-w); margin: 50px auto 70px; padding: 0 24px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 60px; }
+  .card-box { background: #f7f9fa; border-radius: 12px; padding: 36px; border-left: 5px solid var(--accent); }
+  .card-box h3 { font-size: 22px; margin-bottom: 14px; color: var(--primary); }
+
+  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+  .feature-item {
+    background: #fff; padding: 28px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center;
+  }
+  .feature-item .icon { font-size: 38px; margin-bottom: 14px; }
+  .feature-item h4 { font-size: 18px; margin-bottom: 8px; }
+
+  .site-footer { background: #0d0d1a; color: #fff; padding: 40px 24px; font-size: 13px; text-align: center; }
+  @media (max-width: 768px) {
+    .grid-2, .features-grid { grid-template-columns: 1fr; }
+    .nav-menu { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bcn-bar">
+  <a href="https://www.barcelona.cat/en/" target="_blank">
+    <span>Barcelona City Council</span>
+  </a>
+  <div><a href="index.html" style="color:#aaa;">EN</a></div>
+</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo">
+      <img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/logo-hunday-mitjamaratobarcelona-bybrooks-g.png" alt="Logo">
+    </a>
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="change-owner.html">Change owner</a></li>
+        <li><a href="manage-registration.html">Manage registration</a></li>
+        <li><a href="parunda.html" style="color:var(--accent); font-weight:bold;">PaRunda by Brooks</a></li>
+        <li><a href="course.html">Course</a></li>
+        <li><a href="results.html">Results</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="change-owner.html" class="btn-register">Transfer Bib</a>
+  </div>
+</header>
+
+<section class="hero-banner">
+  <h1>PaRunda by Brooks!</h1>
+  <p>The party before the race! Shake out your legs, enjoy good music, and warm up with fellow runners before race day.</p>
+  <a href="index.html#registration" class="btn-cta">
+    🔥 JOIN THE PARUNDA EXPERIENCE
+  </a>
+</section>
+
+<main class="content-section">
+  <div class="grid-2">
+    <div>
+      <h2 style="font-size:32px; margin-bottom:16px; color:var(--primary);">Run, Groove & Warm Up in Barcelona</h2>
+      <p style="margin-bottom:16px;">The <strong>PaRunda by Brooks</strong> is Barcelona’s official pre-race 5K shakeout run and celebration. Held on Saturday morning before Sunday's half marathon, it gathers runners from over 100 nationalities for a relaxed jog, lively DJ sets, breakfast, and exclusive Brooks gear testing.</p>
+      <p>Whether you're aiming for a personal best on Sunday or just visiting Barcelona for the half marathon weekend, PaRunda gives you the ultimate community vibe.</p>
+    </div>
+    <div class="card-box">
+      <h3>Event Details</h3>
+      <p><strong>📍 Start & Finish:</strong> Parc de la Ciutadella, Barcelona</p>
+      <p><strong>📅 Date:</strong> Saturday, February 13, 2027</p>
+      <p><strong>⏰ Time:</strong> 10:00 AM</p>
+      <p><strong>🏃 Distance:</strong> 5 km (Non-competitive shakeout pace)</p>
+      <p><strong>🎁 Included:</strong> Official Brooks technical shirt, runner refreshment breakfast, and live DJ set.</p>
+    </div>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-item">
+      <div class="icon">👟</div>
+      <h4>Brooks Shoe Trials</h4>
+      <p>Test the latest Brooks running footwear models like the Hyperion Max and Ghost Max right on the course.</p>
+    </div>
+    <div class="feature-item">
+      <div class="icon">🎵</div>
+      <h4>Live Music & Vibes</h4>
+      <p>DJs, percussionists, and entertainment will turn the Ciutadella park into a huge running fiesta.</p>
+    </div>
+    <div class="feature-item">
+      <div class="icon">🥐</div>
+      <h4>Post-Run Breakfast</h4>
+      <p>Fresh fruit, croissants, recovery drinks, and coffee courtesy of official race provisioning partners.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>&copy; 2027 Hyundai Mitja Marató Barcelona by Brooks. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

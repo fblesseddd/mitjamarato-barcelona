@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Official Results & Leaderboard - Hyundai Mitja Marató Barcelona by Brooks</title>
+<link rel="icon" type="image/png" href="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/HMMB-favicon-150x150.png">
+<link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --primary: #1a1a2e;
+    --accent: #00afbf;
+    --accent-hover: #0096a4;
+    --white: #ffffff;
+    --dark-gray: #2b2b2b;
+    --mid-gray: #666;
+    --border: #e0e0e0;
+    --font: 'Didact Gothic', sans-serif;
+    --max-w: 1200px;
+    --header-h: 70px;
+  }
+  body { font-family: var(--font); color: var(--dark-gray); background: #f8fafc; line-height: 1.6; }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+  .bcn-bar { background: #000; color: #fff; font-size: 12px; padding: 6px 24px; display: flex; align-items: center; justify-content: space-between; }
+  .bcn-bar a { color: #fff; }
+  .site-header { position: sticky; top: 0; z-index: 1000; background: var(--white); box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+  .header-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; height: var(--header-h); display: flex; align-items: center; justify-content: space-between; }
+  .header-logo img { height: 48px; }
+  .nav-menu { display: flex; align-items: center; gap: 4px; }
+  .nav-menu li a { display: block; padding: 8px 14px; font-size: 14px; font-weight: 500; border-radius: 4px; }
+  .nav-menu li a:hover { color: var(--accent); background: #f0fbfc; }
+  .btn-register { background: var(--accent); color: var(--white); padding: 10px 22px; font-size: 13px; font-weight: 700; border-radius: 4px; }
+
+  .page-banner { background: linear-gradient(135deg, #101026 0%, #1a1a3a 100%); color: var(--white); padding: 50px 24px; text-align: left; }
+  .banner-container { max-width: var(--max-w); margin: 0 auto; }
+  .breadcrumb { font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 12px; }
+  .page-title { font-size: 38px; margin-bottom: 8px; }
+
+  .content-section { max-width: var(--max-w); margin: 40px auto 70px; padding: 0 20px; }
+  .filter-card { background: var(--white); border-radius: 10px; padding: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 30px; }
+  .filter-grid { display: grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 16px; align-items: flex-end; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-group label { font-size: 13px; font-weight: 600; color: #444; }
+  .form-group input, .form-group select { padding: 10px 14px; border: 1px solid var(--border); border-radius: 6px; font-size: 14px; }
+  .btn-search { background: var(--accent); color: white; border: none; padding: 11px 24px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+
+  .table-box { background: var(--white); border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+  table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
+  thead { background: #f1f5f9; color: #475569; font-size: 12px; text-transform: uppercase; }
+  th, td { padding: 14px 18px; border-bottom: 1px solid #e2e8f0; }
+  tbody tr:hover { background: #f8fafc; }
+  .pos-badge { font-weight: bold; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .gold { background: #fef3c7; color: #d97706; }
+  .silver { background: #f1f5f9; color: #64748b; }
+  .bronze { background: #ffedd5; color: #c2410c; }
+
+  .site-footer { background: #0d0d1a; color: #fff; padding: 40px 24px; font-size: 13px; text-align: center; }
+  @media (max-width: 768px) {
+    .filter-grid { grid-template-columns: 1fr; }
+    .nav-menu { display: none; }
+    .table-box { overflow-x: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bcn-bar">
+  <a href="https://www.barcelona.cat/en/" target="_blank"><span>Barcelona City Council</span></a>
+  <div><a href="index.html" style="color:#aaa;">EN</a></div>
+</div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo">
+      <img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/logo-hunday-mitjamaratobarcelona-bybrooks-g.png" alt="Logo">
+    </a>
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="change-owner.html">Change owner</a></li>
+        <li><a href="manage-registration.html">Manage registration</a></li>
+        <li><a href="parunda.html">PaRunda</a></li>
+        <li><a href="course.html">Course</a></li>
+        <li><a href="results.html" style="color:var(--accent); font-weight:bold;">Results</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="change-owner.html" class="btn-register">Transfer Bib</a>
+  </div>
+</header>
+
+<section class="page-banner">
+  <div class="banner-container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / I am a runner / Results</div>
+    <h1 class="page-title">Race Results & Leaderboard</h1>
+    <p>Look up official split times, net finish times, rankings, and certificates.</p>
+  </div>
+</section>
+
+<main class="content-section">
+
+  <div class="filter-card">
+    <form class="filter-grid" onsubmit="event.preventDefault(); filterTable();">
+      <div class="form-group">
+        <label>Runner Name or Bib Number</label>
+        <input type="text" id="searchInput" placeholder="Search by name (e.g. Hagos, Loice) or Bib #...">
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <select id="genderFilter">
+          <option value="ALL">All Categories</option>
+          <option value="Men">Men Elite & Overall</option>
+          <option value="Women">Women Elite & Overall</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Edition Year</label>
+        <select>
+          <option>2026 (Record Edition)</option>
+          <option>2025</option>
+          <option>2024</option>
+        </select>
+      </div>
+      <button type="submit" class="btn-search">Filter Results</button>
+    </form>
+  </div>
+
+  <div class="table-box">
+    <table id="resultsTable">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Bib</th>
+          <th>Athlete</th>
+          <th>Country</th>
+          <th>Category</th>
+          <th>Official Time</th>
+          <th>Pace</th>
+          <th>Certificate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="pos-badge gold">1</span></td>
+          <td><strong># 1</strong></td>
+          <td><strong>Hagos Gebrhiwet</strong></td>
+          <td>🇪🇹 ETH</td>
+          <td>Men Elite</td>
+          <td><strong>00:58:05</strong></td>
+          <td>2:45 min/km</td>
+          <td><button onclick="alert('Downloading Certificate for Hagos Gebrhiwet (00:58:05)')" style="background:#f0fbfc; border:1px solid #00afbf; color:#00afbf; border-radius:4px; padding:4px 10px; cursor:pointer;">PDF</button></td>
+        </tr>
+        <tr>
+          <td><span class="pos-badge silver">2</span></td>
+          <td><strong># 3</strong></td>
+          <td><strong>Kibiwott Kandie</strong></td>
+          <td>🇰🇪 KEN</td>
+          <td>Men Elite</td>
+          <td><strong>00:58:28</strong></td>
+          <td>2:46 min/km</td>
+          <td><button onclick="alert('Downloading Certificate')" style="background:#f0fbfc; border:1px solid #00afbf; color:#00afbf; border-radius:4px; padding:4px 10px; cursor:pointer;">PDF</button></td>
+        </tr>
+        <tr>
+          <td><span class="pos-badge bronze">3</span></td>
+          <td><strong># 5</strong></td>
+          <td><strong>Chala Regasa</strong></td>
+          <td>🇪🇹 ETH</td>
+          <td>Men Elite</td>
+          <td><strong>00:59:12</strong></td>
+          <td>2:48 min/km</td>
+          <td><button onclick="alert('Downloading Certificate')" style="background:#f0fbfc; border:1px solid #00afbf; color:#00afbf; border-radius:4px; padding:4px 10px; cursor:pointer;">PDF</button></td>
+        </tr>
+        <tr>
+          <td><span class="pos-badge gold">1</span></td>
+          <td><strong># F1</strong></td>
+          <td><strong>Loice Chemnung</strong></td>
+          <td>🇰🇪 KEN</td>
+          <td>Women Elite</td>
+          <td><strong>01:04:00</strong></td>
+          <td>3:02 min/km</td>
+          <td><button onclick="alert('Downloading Certificate for Loice Chemnung (01:04:00)')" style="background:#f0fbfc; border:1px solid #00afbf; color:#00afbf; border-radius:4px; padding:4px 10px; cursor:pointer;">PDF</button></td>
+        </tr>
+        <tr>
+          <td><span class="pos-badge silver">2</span></td>
+          <td><strong># F4</strong></td>
+          <td><strong>Faith Chepkoech</strong></td>
+          <td>🇰🇪 KEN</td>
+          <td>Women Elite</td>
+          <td><strong>01:04:55</strong></td>
+          <td>3:05 min/km</td>
+          <td><button onclick="alert('Downloading Certificate')" style="background:#f0fbfc; border:1px solid #00afbf; color:#00afbf; border-radius:4px; padding:4px 10px; cursor:pointer;">PDF</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <p>&copy; 2027 Hyundai Mitja Marató Barcelona by Brooks. All rights reserved.</p>
+</footer>
+
+<script>
+  function filterTable() {
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    const rows = document.querySelectorAll('#resultsTable tbody tr');
+    rows.forEach(r => {
+      const text = r.textContent.toLowerCase();
+      r.style.display = text.includes(q) ? '' : 'none';
+    });
+  }
+</script>
+
+</body>
+</html>

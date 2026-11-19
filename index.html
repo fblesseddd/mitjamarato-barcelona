@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home - February 14th 2027 - Hyundai Mitja Marató Barcelona by Brooks</title>
+<link rel="icon" type="image/png" href="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/HMMB-favicon-150x150.png">
+<link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet">
+<style>
+  /* ===== RESET & BASE ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --primary: #1a1a2e;
+    --accent: #00afbf;
+    --accent2: #e63946;
+    --white: #ffffff;
+    --light-gray: #f5f5f5;
+    --dark-gray: #333;
+    --mid-gray: #666;
+    --border: #ddd;
+    --font: 'Didact Gothic', sans-serif;
+    --max-w: 1200px;
+    --header-h: 70px;
+  }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font);
+    color: var(--dark-gray);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; height: auto; display: block; }
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+
+  /* ===== BARCELONA BRAND BAR ===== */
+  .bcn-bar {
+    background: #000;
+    color: #fff;
+    font-size: 12px;
+    padding: 6px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .bcn-bar a { color: #fff; display: flex; align-items: center; gap: 6px; }
+  .bcn-bar img { height: 22px; width: auto; }
+  .bcn-bar-right { display: flex; align-items: center; gap: 20px; }
+  .bcn-lang-btn {
+    background: none; border: none; color: #fff; font-size: 12px;
+    cursor: pointer; display: flex; align-items: center; gap: 4px;
+    font-family: var(--font);
+  }
+
+  /* ===== STICKY HEADER ===== */
+  .site-header {
+    position: sticky; top: 0; z-index: 1000;
+    background: var(--white);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+  .header-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 24px;
+    height: var(--header-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .header-logo img { height: 48px; width: auto; }
+  .header-nav { display: flex; align-items: center; gap: 0; }
+  .nav-menu { display: flex; align-items: center; gap: 4px; }
+  .nav-menu li { position: relative; }
+  .nav-menu li a, .nav-menu li > span {
+    display: block;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dark-gray);
+    cursor: pointer;
+    white-space: nowrap;
+    border-radius: 4px;
+    transition: color 0.2s, background 0.2s;
+  }
+  .nav-menu li a:hover, .nav-menu li > span:hover { color: var(--accent); background: #f0fbfc; }
+  .nav-menu li.has-children > span::after { content: ' ▾'; font-size: 10px; }
+  /* Dropdowns */
+  .nav-dropdown {
+    display: none; position: absolute; top: 100%; left: 0;
+    background: var(--white); min-width: 200px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    border-radius: 6px; overflow: hidden; z-index: 100;
+  }
+  .nav-dropdown li a {
+    padding: 10px 18px; font-size: 13px;
+    border-radius: 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .nav-dropdown li:last-child a { border-bottom: none; }
+  .nav-menu li.has-children:hover .nav-dropdown { display: block; }
+  /* Header right */
+  .header-right { display: flex; align-items: center; gap: 12px; }
+  .btn-register {
+    background: var(--primary); color: var(--white);
+    padding: 10px 22px; border-radius: 4px;
+    font-size: 13px; font-weight: 600;
+    white-space: nowrap;
+    transition: background 0.2s;
+    border: none; cursor: pointer;
+  }
+  .btn-register:hover { background: var(--accent); }
+  .social-icons { display: flex; align-items: center; gap: 10px; }
+  .social-icons a { 
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--light-gray); display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, color 0.2s;
+    color: var(--dark-gray);
+  }
+  .social-icons a:hover { background: var(--primary); color: var(--white); }
+  .social-icons svg { width: 15px; height: 15px; fill: currentColor; }
+  /* Mobile hamburger */
+  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--dark-gray); margin: 5px 0; transition: 0.3s; }
+
+  /* ===== HERO / BANNER CAROUSEL ===== */
+  .hero-carousel { position: relative; overflow: hidden; background: var(--primary); }
+  .hero-slides { display: flex; transition: transform 0.5s ease; }
+  .hero-slide {
+    min-width: 100%;
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Slide 1 – Marketplace / Sold Out */
+  .hero-slide-1 {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+    color: var(--white);
+  }
+  .hero-slide-1-inner {
+    max-width: var(--max-w); width: 100%; padding: 60px 24px;
+    display: flex; flex-direction: column; align-items: flex-start; gap: 20px;
+    position: relative; z-index: 2;
+  }
+  .hero-deco-tl {
+    position: absolute; top: 0; left: 0;
+    width: 300px; opacity: 0.6;
+  }
+  .hero-deco-br {
+    position: absolute; bottom: 0; right: 0;
+    width: 350px; opacity: 0.6;
+  }
+  .hero-label {
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--accent); font-weight: 600;
+  }
+  .hero-title { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 700; line-height: 1.1; }
+  .hero-subtitle { font-size: clamp(1rem, 2vw, 1.4rem); opacity: 0.85; }
+  .hero-btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 32px; border-radius: 50px;
+    font-size: 14px; font-weight: 600;
+    background: var(--white); color: var(--primary);
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 8px;
+  }
+  .hero-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+  .hero-btn-fire { font-size: 18px; }
+  /* Slide 2 – Parunda */
+  .hero-slide-2 {
+    background: linear-gradient(135deg, #e63946 0%, #c1121f 100%);
+    color: var(--white);
+  }
+  .hero-slide-2-inner {
+    max-width: var(--max-w); width: 100%; padding: 60px 24px;
+    display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px;
+  }
+  /* Carousel controls */
+  .carousel-prev, .carousel-next {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.15); border: none; cursor: pointer;
+    width: 44px; height: 44px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white); font-size: 20px; z-index: 10;
+    transition: background 0.2s;
+  }
+  .carousel-prev:hover, .carousel-next:hover { background: rgba(255,255,255,0.3); }
+  .carousel-prev { left: 16px; }
+  .carousel-next { right: 16px; }
+  .carousel-dots {
+    position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 8px;
+  }
+  .carousel-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: rgba(255,255,255,0.4); cursor: pointer;
+    border: none; transition: background 0.2s;
+  }
+  .carousel-dot.active { background: var(--white); }
+
+  /* ===== SPONSOR LOGOS BAR ===== */
+  .sponsors-bar {
+    background: var(--light-gray);
+    padding: 20px 24px;
+    overflow: hidden;
+  }
+  .sponsors-track {
+    display: flex; align-items: center; gap: 48px;
+    animation: scrollLogos 25s linear infinite;
+    white-space: nowrap;
+  }
+  .sponsors-track:hover { animation-play-state: paused; }
+  .sponsors-track img { height: 44px; width: auto; opacity: 0.75; transition: opacity 0.2s; flex-shrink: 0; }
+  .sponsors-track img:hover { opacity: 1; }
+  @keyframes scrollLogos {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ===== CONTENT GRID (3 boxes) ===== */
+  .content-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+  .content-box {
+    position: relative; overflow: hidden; min-height: 320px;
+    display: flex; align-items: flex-end;
+    cursor: pointer;
+  }
+  .content-box img.box-bg {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+  .content-box:hover img.box-bg { transform: scale(1.05); }
+  .content-box-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 50%);
+  }
+  .content-box-label {
+    position: relative; z-index: 2;
+    color: var(--white);
+    padding: 24px;
+    font-size: 20px; font-weight: 700;
+  }
+  .content-box-label span {
+    display: block; font-size: 13px; font-weight: 400; opacity: 0.8; margin-top: 4px;
+  }
+
+  /* ===== FEEL THE BEAT SECTION ===== */
+  .feel-beat {
+    display: grid; grid-template-columns: 1fr 1fr;
+    min-height: 500px;
+  }
+  .feel-beat-image { overflow: hidden; }
+  .feel-beat-image img { width: 100%; height: 100%; object-fit: cover; }
+  .feel-beat-content {
+    background: var(--primary); color: var(--white);
+    padding: 60px 48px;
+    display: flex; flex-direction: column; justify-content: center; gap: 20px;
+  }
+  .feel-beat-content .section-tag {
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--accent); font-weight: 600;
+  }
+  .feel-beat-content h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; }
+  .feel-beat-content h3 { font-size: clamp(1.2rem, 2vw, 1.6rem); color: var(--accent); font-style: italic; }
+  .feel-beat-content p { font-size: 15px; line-height: 1.8; opacity: 0.85; }
+  .feel-beat-content p em { font-style: italic; color: var(--accent); }
+  .date-badge {
+    display: inline-block;
+    background: var(--accent2); color: var(--white);
+    padding: 10px 24px; border-radius: 50px;
+    font-size: 18px; font-weight: 700;
+    align-self: flex-start;
+  }
+
+  /* ===== SECTION WRAPPER ===== */
+  .section { padding: 80px 24px; }
+  .section-inner { max-width: var(--max-w); margin: 0 auto; }
+  .section-title {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 700; margin-bottom: 8px; color: var(--primary);
+  }
+  .section-sub { color: var(--mid-gray); font-size: 15px; margin-bottom: 40px; }
+
+  /* ===== NEWS GRID ===== */
+  .news-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  .news-card {
+    display: flex; flex-direction: column; gap: 12px;
+    border-radius: 8px; overflow: hidden;
+    border: 1px solid var(--border);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .news-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.1); transform: translateY(-4px); }
+  .news-card-img { overflow: hidden; height: 160px; }
+  .news-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+  .news-card:hover .news-card-img img { transform: scale(1.05); }
+  .news-card-body { padding: 16px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .news-card-body h2 {
+    font-size: 15px; font-weight: 600; line-height: 1.4; color: var(--primary);
+  }
+  .news-card-body p { font-size: 13px; color: var(--mid-gray); line-height: 1.6; flex: 1; }
+  .btn-read-more {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 600; color: var(--primary);
+    border: 2px solid var(--primary); border-radius: 4px;
+    padding: 5px 12px; align-self: flex-start;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-read-more:hover { background: var(--primary); color: var(--white); }
+  .btn-read-more svg { width: 14px; height: 14px; fill: currentColor; }
+  .btn-center { text-align: center; margin-top: 8px; }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 32px; border-radius: 4px;
+    font-size: 14px; font-weight: 600;
+    border: 2px solid var(--primary); color: var(--primary);
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-secondary:hover { background: var(--primary); color: var(--white); }
+
+  /* ===== FAQ SECTION ===== */
+  .faq-section { background: var(--light-gray); }
+  .faq-list { display: flex; flex-direction: column; gap: 0; margin: 32px 0; }
+  details.faq-item {
+    border-bottom: 1px solid var(--border);
+    background: var(--white);
+  }
+  details.faq-item:first-child { border-top: 1px solid var(--border); }
+  details.faq-item summary {
+    padding: 20px 24px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
+    font-size: 15px; font-weight: 600; color: var(--primary);
+    list-style: none;
+  }
+  details.faq-item summary::-webkit-details-marker { display: none; }
+  details.faq-item summary::after {
+    content: '+'; font-size: 22px; font-weight: 300;
+    color: var(--accent); flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+  details.faq-item[open] summary::after { content: '−'; }
+  .faq-answer { padding: 0 24px 20px; font-size: 14px; line-height: 1.8; color: var(--mid-gray); }
+  .faq-answer a { color: var(--accent); text-decoration: underline; }
+  .faq-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 28px; border-radius: 4px;
+    font-size: 14px; font-weight: 600;
+    background: var(--primary); color: var(--white);
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--accent); }
+  .btn-chat {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 28px; border-radius: 4px;
+    font-size: 14px; font-weight: 600;
+    background: var(--white); color: var(--primary);
+    border: 2px solid var(--primary);
+    cursor: pointer; transition: background 0.2s, color 0.2s;
+  }
+  .btn-chat:hover { background: var(--primary); color: var(--white); }
+
+  /* ===== APP BANNER ===== */
+  .app-banner {
+    background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+    color: var(--white);
+    padding: 60px 24px;
+  }
+  .app-banner-inner {
+    max-width: var(--max-w); margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+    align-items: center;
+  }
+  .app-banner h2 { font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 12px; }
+  .app-banner h3 { font-size: 15px; opacity: 0.8; font-weight: 400; margin-bottom: 32px; }
+  .app-store-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .app-store-btns img { height: 48px; width: auto; border-radius: 8px; }
+  .app-banner-visual {
+    display: flex; align-items: center; justify-content: center;
+  }
+  .app-phone-mockup {
+    width: 200px; height: 400px; background: #fff;
+    border-radius: 32px; border: 8px solid #333;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 60px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+
+  /* ===== SPONSORS FOOTER SECTION ===== */
+  .sponsors-footer { padding: 60px 24px; background: var(--white); }
+  .sponsors-footer-inner { max-width: var(--max-w); margin: 0 auto; }
+  .sponsor-category { margin-bottom: 48px; }
+  .sponsor-category-title {
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--mid-gray); font-weight: 600; margin-bottom: 8px;
+  }
+  .sponsor-divider { height: 2px; background: var(--border); margin-bottom: 24px; }
+  .sponsor-logos {
+    display: flex; flex-wrap: wrap; align-items: center;
+    gap: 24px 40px;
+  }
+  .sponsor-logos img { height: 60px; width: auto; object-fit: contain; filter: grayscale(20%); transition: filter 0.2s; }
+  .sponsor-logos img:hover { filter: none; }
+  .sponsor-contact {
+    background: var(--light-gray); border-radius: 8px; padding: 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 20px; flex-wrap: wrap; margin-top: 20px;
+  }
+  .sponsor-contact p { font-size: 15px; color: var(--mid-gray); }
+
+  /* ===== FOOTER ===== */
+  .site-footer {
+    background: var(--primary); color: rgba(255,255,255,0.85);
+    padding: 60px 24px 32px;
+  }
+  .footer-inner {
+    max-width: var(--max-w); margin: 0 auto;
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px; margin-bottom: 48px;
+  }
+  .footer-brand img { height: 55px; width: auto; margin-bottom: 20px; filter: brightness(0) invert(1); }
+  .footer-brand address { font-style: normal; font-size: 13px; line-height: 1.8; opacity: 0.7; }
+  .footer-brand address svg { width: 12px; height: 12px; fill: currentColor; display: inline; vertical-align: middle; margin-right: 4px; }
+  .footer-col h4 { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 20px; }
+  .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul li a { font-size: 13px; opacity: 0.75; transition: opacity 0.2s; }
+  .footer-col ul li a:hover { opacity: 1; color: var(--accent); }
+  .footer-newsletter {
+    background: var(--accent);
+    padding: 32px 24px; border-radius: 8px; color: var(--white);
+    margin-bottom: 48px;
+    max-width: var(--max-w); margin-left: auto; margin-right: auto;
+  }
+  .footer-newsletter h3 { font-size: 16px; font-weight: 700; margin-bottom: 16px; }
+  .newsletter-form { display: flex; gap: 10px; flex-wrap: wrap; }
+  .newsletter-form input {
+    flex: 1; min-width: 200px; padding: 12px 16px;
+    border: none; border-radius: 50px; font-size: 14px;
+    font-family: var(--font);
+  }
+  .newsletter-form button {
+    padding: 12px 28px; border-radius: 50px; border: none;
+    background: var(--white); color: var(--accent);
+    font-weight: 700; font-size: 14px; cursor: pointer;
+    font-family: var(--font); transition: background 0.2s;
+  }
+  .newsletter-form button:hover { background: var(--primary); color: var(--white); }
+  .newsletter-consent { font-size: 12px; opacity: 0.8; margin-top: 10px; }
+  .newsletter-consent a { text-decoration: underline; }
+  .footer-bottom {
+    max-width: var(--max-w); margin: 0 auto;
+    padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 20px; flex-wrap: wrap;
+  }
+  .footer-bottom p { font-size: 12px; opacity: 0.5; }
+  .footer-social { display: flex; gap: 10px; }
+  .footer-social a {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white); transition: background 0.2s;
+  }
+  .footer-social a:hover { background: var(--accent); }
+  .footer-social svg { width: 15px; height: 15px; fill: currentColor; }
+  .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+  .footer-links a { font-size: 12px; opacity: 0.5; transition: opacity 0.2s; }
+  .footer-links a:hover { opacity: 1; }
+
+  /* ===== MOBILE NAV OVERLAY ===== */
+  .mobile-nav {
+    display: none; position: fixed; inset: 0;
+    background: var(--white); z-index: 2000;
+    flex-direction: column; padding: 24px;
+    overflow-y: auto;
+  }
+  .mobile-nav.open { display: flex; }
+  .mobile-nav-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; }
+  .mobile-nav-header img { height: 42px; }
+  .mobile-close { background: none; border: none; font-size: 28px; cursor: pointer; }
+  .mobile-menu-list { display: flex; flex-direction: column; gap: 0; }
+  .mobile-menu-list li { border-bottom: 1px solid var(--border); }
+  .mobile-menu-list li a {
+    display: block; padding: 14px 0;
+    font-size: 15px; font-weight: 500; color: var(--dark-gray);
+  }
+  .mobile-menu-list li.sub a { padding-left: 20px; font-size: 13px; color: var(--mid-gray); }
+  .mobile-btn-wrap { margin-top: 32px; }
+  .mobile-btn-wrap .btn-register { width: 100%; text-align: center; display: block; padding: 14px; }
+
+  /* ===== LANGUAGE SWITCHER ===== */
+  .lang-switcher { display: flex; gap: 8px; }
+  .lang-switcher a {
+    font-size: 12px; padding: 4px 8px; border-radius: 3px;
+    color: var(--mid-gray); border: 1px solid var(--border);
+    transition: background 0.2s, color 0.2s;
+  }
+  .lang-switcher a.active, .lang-switcher a:hover { background: var(--primary); color: var(--white); border-color: var(--primary); }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .news-grid { grid-template-columns: repeat(2, 1fr); }
+    .feel-beat { grid-template-columns: 1fr; }
+    .feel-beat-image { height: 300px; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .content-grid { grid-template-columns: 1fr; }
+    .content-box { min-height: 220px; }
+    .app-banner-inner { grid-template-columns: 1fr; gap: 32px; }
+    .app-banner-visual { display: none; }
+  }
+  @media (max-width: 768px) {
+    .news-grid { grid-template-columns: 1fr; }
+    .header-nav { display: none; }
+    .social-icons { display: none; }
+    .hamburger { display: block; }
+    .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; }
+    .faq-actions { flex-direction: column; align-items: flex-start; }
+  }
+  @media (max-width: 480px) {
+    .hero-slide { min-height: 350px; }
+    .feel-beat-content { padding: 40px 24px; }
+    .section { padding: 48px 16px; }
+    .bcn-bar { font-size: 11px; padding: 5px 12px; }
+    .bcn-bar-right { gap: 12px; }
+  }
+
+  /* ===== UTILITIES ===== */
+  .arrow-svg { width: 16px; height: 16px; fill: currentColor; }
+  .text-accent { color: var(--accent); }
+  .text-center { text-align: center; }
+  .mt-8 { margin-top: 8px; }
+  .mt-16 { margin-top: 16px; }
+
+  /* ===== BACK TO TOP ===== */
+  .back-to-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, transform 0.2s, background 0.2s;
+    z-index: 999;
+    border: none;
+  }
+  .back-to-top:hover {
+    background: #0096a4;
+    transform: translateY(-2px);
+  }
+  .back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== BARCELONA BRAND BAR ===== -->
+<div class="bcn-bar">
+  <a href="https://www.barcelona.cat/en/" target="_blank" rel="noopener">
+    <img src="https://www.barcelona.cat/assets/images/brand/banner/2025/logo-ajbcn.svg" alt="Barcelona City Council" onerror="this.style.display='none'">
+    <span>Barcelona City Council</span>
+  </a>
+  <div class="bcn-bar-right">
+    <div class="lang-switcher">
+      <a href="https://www.mitjamarato.barcelona/">CA</a>
+      <a href="https://www.mitjamarato.barcelona/es/">ES</a>
+      <a href="https://www.mitjamarato.barcelona/en/" class="active">EN</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== STICKY HEADER ===== -->
+<header class="site-header">
+  <div class="header-inner">
+    <!-- Logo -->
+    <a href="#" class="header-logo">
+      <img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/logo-hunday-mitjamaratobarcelona-bybrooks-g.png"
+           alt="Hyundai Mitja Marató Barcelona by Brooks"
+           onerror="this.alt='Mitja Marató Barcelona'; this.style.fontSize='14px'; this.style.fontWeight='bold';">
+    </a>
+
+    <!-- Desktop nav -->
+    <nav class="header-nav">
+      <ul class="nav-menu">
+        <li class="has-children">
+          <span>Registrations</span>
+          <ul class="nav-dropdown">
+            <li><a href="parunda.html">PaRunda by Brooks!</a></li>
+            <li><a href="change-owner.html" style="color:var(--accent); font-weight:bold;">Change owner</a></li>
+            <li><a href="manage-registration.html">Manage registration</a></li>
+          </ul>
+        </li>
+        <li class="has-children">
+          <span>I am a runner</span>
+          <ul class="nav-dropdown">
+            <li><a href="regulation.html">Regulation</a></li>
+            <li><a href="course.html">Course</a></li>
+            <li><a href="results.html">Results</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </li>
+        <li class="has-children">
+          <span>Event</span>
+          <ul class="nav-dropdown">
+            <li><a href="parunda.html">PaRunda by Brooks</a></li>
+            <li><a href="course.html">Route & Highlights</a></li>
+            <li><a href="#sponsors">Sponsors</a></li>
+            <li><a href="#news">News</a></li>
+          </ul>
+        </li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#sponsors">Sponsors</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Right side -->
+    <div class="header-right">
+      <div class="social-icons">
+        <a href="https://twitter.com/mitjabarcelona" target="_blank" aria-label="X/Twitter">
+          <svg viewBox="0 0 512 512"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/mitjamaratobarcelona" target="_blank" aria-label="Facebook">
+          <svg viewBox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/mitjabarcelona/" target="_blank" aria-label="Instagram">
+          <svg viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+        </a>
+        <a href="https://www.youtube.com/user/mitjabarcelona" target="_blank" aria-label="YouTube">
+          <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+        </a>
+      </div>
+      <a href="https://www.rockthesport.com/en/event/hyundai-mitja-marato-barcelona-by-brooks-2027" class="btn-register" target="_blank">Registration</a>
+      <button class="hamburger" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== MOBILE NAV ===== -->
+<nav class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-header">
+    <img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/logo-hunday-mitjamaratobarcelona-bybrooks-g.png" alt="Logo">
+    <button class="mobile-close" onclick="document.getElementById('mobileNav').classList.remove('open')">&times;</button>
+  </div>
+  <ul class="mobile-menu-list">
+    <li><a href="parunda.html">PaRunda by Brooks!</a></li>
+    <li><a href="change-owner.html" style="color:var(--accent); font-weight:bold;">Change owner</a></li>
+    <li><a href="manage-registration.html">Manage registration</a></li>
+    <li><a href="regulation.html">Regulation</a></li>
+    <li><a href="course.html">Course</a></li>
+    <li><a href="results.html">Results</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#sponsors">Sponsors</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="mobile-btn-wrap">
+    <a href="https://www.rockthesport.com/en/event/hyundai-mitja-marato-barcelona-by-brooks-2027" class="btn-register">Registration</a>
+  </div>
+</nav>
+
+<!-- ===== HERO CAROUSEL ===== -->
+<section class="hero-carousel">
+  <div class="hero-slides" id="heroSlides">
+
+    <!-- Slide 1: Sold Out / Marketplace -->
+    <div class="hero-slide hero-slide-1">
+      <img class="hero-deco-tl" src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/celebra-arriba-izquierda.svg" alt="" onerror="this.style.display='none'">
+      <div class="hero-slide-1-inner">
+        <span class="hero-label">Hyundai Mitja Marató Barcelona by Brooks</span>
+        <h1 class="hero-title">Sold Out</h1>
+        <p class="hero-subtitle">February 14th, 2027 · Barcelona</p>
+        <a href="https://www.mitjamarato.barcelona/en/marketplace/" class="hero-btn">
+          <span>🛍️</span> Marketplace
+        </a>
+      </div>
+      <img class="hero-deco-br" src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/barcelona-abajo-derecha.svg" alt="" onerror="this.style.display='none'">
+    </div>
+
+    <!-- Slide 2: Parunda -->
+    <div class="hero-slide hero-slide-2">
+      <div class="hero-slide-2-inner">
+        <span class="hero-label" style="color:rgba(255,255,255,0.8)">Join the fun</span>
+        <h1 class="hero-title">¡February 15, 2026!</h1>
+        <p class="hero-subtitle" style="color:rgba(255,255,255,0.9)">The PaRunda by Brooks experience awaits you</p>
+        <a href="https://inscripciones.rpmsports.es/es/evento/parunda-2027/inscripcion/selecciona-tarifa" class="hero-btn" target="_blank">
+          <span class="hero-btn-fire">🔥</span> I'M IN FOR THE PARUNDA BY BROOKS
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <button class="carousel-prev" onclick="changeSlide(-1)" aria-label="Previous">&#8249;</button>
+  <button class="carousel-next" onclick="changeSlide(1)" aria-label="Next">&#8250;</button>
+  <div class="carousel-dots">
+    <button class="carousel-dot active" onclick="goToSlide(0)"></button>
+    <button class="carousel-dot" onclick="goToSlide(1)"></button>
+  </div>
+</section>
+
+<!-- ===== SPONSOR LOGOS SCROLLING BAR ===== -->
+<div class="sponsors-bar" aria-label="Sponsor logos">
+  <div class="sponsors-track" id="sponsorsTrack">
+    <a href="https://www.barcelona.cat/ca" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/logo-barcelona-patrocinador-mitja.png" alt="Barcelona" onerror="this.style.display='none'"></a>
+    <a href="https://www.hyundai.com/es/es.html" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/logo-hyunday-patrocinador-mitja-1024x228.png" alt="Hyundai" onerror="this.style.display='none'"></a>
+    <a href="https://www.brooksrunning.com/es_es/" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/logo-huyndai-patrocinador-mitja-1024x201.png" alt="Brooks" onerror="this.style.display='none'"></a>
+    <a href="https://www.lavanguardia.com/" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/LV_LOGO_RGB-1536x233.png" alt="La Vanguardia" onerror="this.style.display='none'"></a>
+    <a href="https://www.deloitte.com/es/es.html" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/deloitte.webp" alt="Deloitte" onerror="this.style.display='none'"></a>
+    <a href="https://www.yamaha-motor.eu/es/es/home/" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/2025_YAM_YamahaLogo_Red_flat_JP_LSC_RGB-1024x220.png" alt="Yamaha" onerror="this.style.display='none'"></a>
+    <a href="https://www.i-run.es/" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/irun-ES-darkbluegreyBG-RVB-300x100-1.png" alt="i-Run" onerror="this.style.display='none'"></a>
+    <a href="https://vithas.es/" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/logo-vithas-1-300x96-1.png" alt="Vithas" onerror="this.style.display='none'"></a>
+    <!-- Duplicate for seamless loop -->
+    <a href="https://www.barcelona.cat/ca" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/logo-barcelona-patrocinador-mitja.png" alt="Barcelona" onerror="this.style.display='none'"></a>
+    <a href="https://www.hyundai.com/es/es.html" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/logo-hyunday-patrocinador-mitja-1024x228.png" alt="Hyundai" onerror="this.style.display='none'"></a>
+    <a href="https://www.brooksrunning.com/es_es/" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/logo-huyndai-patrocinador-mitja-1024x201.png" alt="Brooks" onerror="this.style.display='none'"></a>
+    <a href="https://www.lavanguardia.com/" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/LV_LOGO_RGB-1536x233.png" alt="La Vanguardia" onerror="this.style.display='none'"></a>
+    <a href="https://www.deloitte.com/es/es.html" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/deloitte.webp" alt="Deloitte" onerror="this.style.display='none'"></a>
+    <a href="https://www.yamaha-motor.eu/es/es/home/" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/2025_YAM_YamahaLogo_Red_flat_JP_LSC_RGB-1024x220.png" alt="Yamaha" onerror="this.style.display='none'"></a>
+    <a href="https://www.i-run.es/" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/irun-ES-darkbluegreyBG-RVB-300x100-1.png" alt="i-Run" onerror="this.style.display='none'"></a>
+    <a href="https://vithas.es/" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/logo-vithas-1-300x96-1.png" alt="Vithas" onerror="this.style.display='none'"></a>
+  </div>
+</div>
+
+<!-- ===== CONTENT GRID (3 Boxes) ===== -->
+<div class="content-grid">
+  <a href="parunda.html" class="content-box">
+    <img class="box-bg" src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/parunda-mitja.jpg" alt="PaRunda" onerror="this.style.background='#1a1a2e'">
+    <div class="content-box-overlay"></div>
+    <div class="content-box-label">
+      PaRunda by Brooks
+      <span>Discover & Register</span>
+    </div>
+  </a>
+  <a href="course.html" class="content-box">
+    <img class="box-bg" src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/hotspots-mitja.png" alt="Hot Spots" onerror="this.style.background='#0f3460'">
+    <div class="content-box-overlay"></div>
+    <div class="content-box-label">
+      Hot Spots & Course Map
+      <span>Discover the route highlights</span>
+    </div>
+  </a>
+  <a href="https://marathonphotos.live/Event/Sports%2FMPUK%2F2026%2FBarcelona%20Half%20Marathon/" target="_blank" class="content-box">
+    <img class="box-bg" src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/pack-fotos-mitja.png" alt="Photos" onerror="this.style.background='#e63946'">
+    <div class="content-box-overlay"></div>
+    <div class="content-box-label">
+      Race Photos
+      <span>Find your best moment</span>
+    </div>
+  </a>
+</div>
+
+<!-- ===== FEEL THE BEAT SECTION ===== -->
+<section class="feel-beat">
+  <div class="feel-beat-image">
+    <img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/700x700-Feel-the-beat-scaled-1-1024x1021.webp"
+         alt="Feel the Beat"
+         onerror="this.src=''; this.style.background='linear-gradient(135deg,#1a1a2e,#0f3460)'; this.style.minHeight='400px'">
+  </div>
+  <div class="feel-beat-content">
+    <span class="section-tag">The experience</span>
+    <span class="date-badge">📅 February 14th, 2027</span>
+    <h2>Feel the Beat</h2>
+    <h3>What is your Beat?</h3>
+    <p>In Barcelona, a city where diversity runs deep, every runner finds their own rhythm, their own beat, within this urban symphony.</p>
+    <p><em>What is your Beat?</em> — it's the question that invites us to look inward and define how we make this journey ours. Because it's not just about running — it's about connecting. With the city. With others. With ourselves.</p>
+    <p>Some start their day running at sunrise, then reward themselves with a cozy breakfast. Others dive into the energy of the crowd. Because running the Mitja isn't just about moving forward… It's about elevating the experience. Pushing your limits. <em>Leveling up.</em></p>
+    <a href="https://www.mitjamarato.barcelona/en/" class="hero-btn" style="background:var(--accent); color:var(--white); align-self:flex-start; margin-top:16px;">
+      Discover more
+    </a>
+  </div>
+</section>
+
+<!-- ===== VIDEO SECTION ===== -->
+<section style="background:#1a1a2e; padding:0; position:relative; overflow:hidden;">
+  <a href="https://www.youtube.com/user/mitjabarcelona" target="_blank" style="display:block; position:relative;">
+    <img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/video-mitja.png"
+         alt="Watch the race video"
+         style="width:100%; max-height:420px; object-fit:cover; display:block; opacity:0.85;"
+         onerror="this.style.display='none'">
+    <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+      <div style="width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,0.9);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(0,0,0,0.4); transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+        <svg viewBox="0 0 24 24" style="width:36px;height:36px;fill:#1a1a2e;margin-left:4px;"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+    </div>
+  </a>
+</section>
+
+<!-- ===== LATEST NEWS ===== -->
+<section class="section" style="background: var(--white);">
+  <div class="section-inner">
+    <h2 class="section-title">Latest news</h2>
+    <div class="news-grid">
+
+      <!-- News 1 -->
+      <article class="news-card">
+        <div class="news-card-img">
+          <a href="https://www.mitjamarato.barcelona/en/2026/06/22/zurich-marato-de-barcelona-and-hyundai-mitja-marato-barcelona-by-brooks-among-catalonias-major-sporting-events/">
+            <img src="https://www.mitjamarato.barcelona/wp-content/uploads/elementor/thumbs/Presentacio-BISE_488-©-BISE-_-Luis-Felipe-Castilleja-scaled-rpc4pmradg4rrudm92gzgc5uksucj7hqr609vlf56w.webp"
+                 alt="BISE Barcelona International Sports Events"
+                 onerror="this.style.background='#e9ecef'; this.alt=''; this.style.minHeight='160px'">
+          </a>
+        </div>
+        <div class="news-card-body">
+          <h2><a href="https://www.mitjamarato.barcelona/en/2026/06/22/zurich-marato-de-barcelona-and-hyundai-mitja-marato-barcelona-by-brooks-among-catalonias-major-sporting-events/">Zurich Marató de Barcelona and Hyundai Mitja Marató Barcelona by Brooks Among Catalonia's Major Sporting Events</a></h2>
+          <p>Barcelona International Sports Events (BISE) launches as a new platform bringing together the eight international sporting events with the greatest legacy, impact, and prominence in Barcelona and Catalonia…</p>
+          <a href="https://www.mitjamarato.barcelona/en/2026/06/22/zurich-marato-de-barcelona-and-hyundai-mitja-marato-barcelona-by-brooks-among-catalonias-major-sporting-events/" class="btn-read-more">
+            <svg viewBox="0 0 32 32"><path d="M 21.1875 9.28125 L 19.78125 10.71875 L 24.0625 15 L 4 15 L 4 17 L 24.0625 17 L 19.78125 21.28125 L 21.1875 22.71875 L 27.90625 16 Z"/></svg>
+            Read more
+          </a>
+        </div>
+      </article>
+
+      <!-- News 2 -->
+      <article class="news-card">
+        <div class="news-card-img">
+          <a href="https://www.mitjamarato.barcelona/en/2026/05/20/the-hyundai-mitja-marato-barcelona-by-brooks-opens-registrations-with-40000-bib-numbers-available/">
+            <img src="https://www.mitjamarato.barcelona/wp-content/uploads/elementor/thumbs/@fotorunners.es-MITJA-2026-RACE-2110005-scaled-rnq93liszb1tb4mz62gyrcwwyxr5wjuthytpe1jnyg.webp"
+                 alt="Race runners"
+                 onerror="this.style.background='#e9ecef'; this.style.minHeight='160px'">
+          </a>
+        </div>
+        <div class="news-card-body">
+          <h2><a href="https://www.mitjamarato.barcelona/en/2026/05/20/the-hyundai-mitja-marato-barcelona-by-brooks-opens-registrations-with-40000-bib-numbers-available/">The Hyundai Mitja Marató Barcelona by Brooks opens registrations with 40,000 bib numbers available</a></h2>
+          <p>The race will take place on February 14th, 2027, and is expected to break all participation records. The Hyundai Mitja Marató Barcelona officially opens registrations for its 37th edition…</p>
+          <a href="https://www.mitjamarato.barcelona/en/2026/05/20/the-hyundai-mitja-marato-barcelona-by-brooks-opens-registrations-with-40000-bib-numbers-available/" class="btn-read-more">
+            <svg viewBox="0 0 32 32"><path d="M 21.1875 9.28125 L 19.78125 10.71875 L 24.0625 15 L 4 15 L 4 17 L 24.0625 17 L 19.78125 21.28125 L 21.1875 22.71875 L 27.90625 16 Z"/></svg>
+            Read more
+          </a>
+        </div>
+      </article>
+
+      <!-- News 3 -->
+      <article class="news-card">
+        <div class="news-card-img">
+          <a href="https://www.mitjamarato.barcelona/en/2026/03/30/february-14-and-march-14-2027-new-dates-for-the-hyundai-mitja-marato-barcelona-by-brooks-and-the-zurich-marato-de-barcelona/">
+            <img src="https://www.mitjamarato.barcelona/wp-content/uploads/elementor/thumbs/Image-rl9n7nx333bbxg8ld3rlxb19jngbt05s0va9tjxgjs.webp"
+                 alt="New dates announcement"
+                 onerror="this.style.background='#e9ecef'; this.style.minHeight='160px'">
+          </a>
+        </div>
+        <div class="news-card-body">
+          <h2><a href="https://www.mitjamarato.barcelona/en/2026/03/30/february-14-and-march-14-2027-new-dates-for-the-hyundai-mitja-marato-barcelona-by-brooks-and-the-zurich-marato-de-barcelona/">February 14 and March 14, 2027: new dates for the Hyundai Mitja Marató Barcelona by Brooks and the Zurich Marató de Barcelona</a></h2>
+          <p>The Hyundai Mitja Marató Barcelona by Brooks and the Zurich Marató de Barcelona now have confirmed dates. The Mitja will take place on February 14, 2027, and the Marató on March 14, 2027…</p>
+          <a href="https://www.mitjamarato.barcelona/en/2026/03/30/february-14-and-march-14-2027-new-dates-for-the-hyundai-mitja-marato-barcelona-by-brooks-and-the-zurich-marato-de-barcelona/" class="btn-read-more">
+            <svg viewBox="0 0 32 32"><path d="M 21.1875 9.28125 L 19.78125 10.71875 L 24.0625 15 L 4 15 L 4 17 L 24.0625 17 L 19.78125 21.28125 L 21.1875 22.71875 L 27.90625 16 Z"/></svg>
+            Read more
+          </a>
+        </div>
+      </article>
+
+      <!-- News 4 -->
+      <article class="news-card">
+        <div class="news-card-img">
+          <a href="https://www.mitjamarato.barcelona/en/2026/02/19/hyundai-mitja-marato-barcelona-by-brooks/">
+            <img src="https://www.mitjamarato.barcelona/wp-content/uploads/elementor/thumbs/2044f348-3dec-4af3-8d7b-d87057f07867-2-scaled-rje7wpkzxsmzp2urfubdwl9caowrlcw2zejs9di7t4.jpg"
+                 alt="Race 2026 results"
+                 onerror="this.style.background='#e9ecef'; this.style.minHeight='160px'">
+          </a>
+        </div>
+        <div class="news-card-body">
+          <h2><a href="https://www.mitjamarato.barcelona/en/2026/02/19/hyundai-mitja-marato-barcelona-by-brooks/">Hyundai Mitja Marató Barcelona by Brooks</a></h2>
+          <p>Hagos Gebrhiwet (58:05) and Loice Chemnung (1:04:00) claim victory in a record-breaking edition. Barcelona further consolidates its position as the world's fastest half marathon city…</p>
+          <a href="https://www.mitjamarato.barcelona/en/2026/02/19/hyundai-mitja-marato-barcelona-by-brooks/" class="btn-read-more">
+            <svg viewBox="0 0 32 32"><path d="M 21.1875 9.28125 L 19.78125 10.71875 L 24.0625 15 L 4 15 L 4 17 L 24.0625 17 L 19.78125 21.28125 L 21.1875 22.71875 L 27.90625 16 Z"/></svg>
+            Read more
+          </a>
+        </div>
+      </article>
+
+    </div>
+    <div class="btn-center">
+      <a href="https://www.mitjamarato.barcelona/en/news/" class="btn-secondary">
+        <svg class="arrow-svg" viewBox="0 0 32 32"><path d="M 21.1875 9.28125 L 19.78125 10.71875 L 24.0625 15 L 4 15 L 4 17 L 24.0625 17 L 19.78125 21.28125 L 21.1875 22.71875 L 27.90625 16 Z"/></svg>
+        See more news
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ SECTION ===== -->
+<section class="section faq-section">
+  <div class="section-inner">
+    <h2 class="section-title">Frequently asked questions</h2>
+    <p class="section-sub">Solve your doubts and questions about the Hyundai Mitja Marató Barcelona by Brooks and stand at the starting line with all the guarantees.</p>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>How can I find out my bib number?</summary>
+        <div class="faq-answer">
+          <p>You'll receive an email on race week with your bib number (check your inbox as spam).</p>
+          <p>If you haven't received the email, you can access it through our official website, through the following <a href="https://inscripciones.rpmsports.es/en/event/hyundai-mitja-marato-barcelona-by-brooks-2027/check-registrations" target="_blank">link</a>.</p>
+          <p>If none of these options have worked for you, you should go to Athlete service once you're at Expo Sports.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Where do I have to pick up my bib number?</summary>
+        <div class="faq-answer">
+          <p>You should pick up your bib number at <a href="https://www.mitjamarato.barcelona/en/i-am-a-runner/runners-fair-expo-sports/visitor-area/">Expo Sports</a>, both on Thursday, Friday and Saturday before the race.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can another person pick up my bib number?</summary>
+        <div class="faq-answer">
+          <p><strong>Yes</strong>. Race bibs and timing chips will be distributed solely and exclusively in person at the Sports Expo on the Thursday, Friday, and Saturday leading up to the race.</p>
+          <p>Bibs will not be distributed on race day. Runners may authorize a third party to collect their bib and runner's bag. This person must present the confirmation slip showing the bib number and the runner's ID (digital copies are accepted).</p>
+          <p>Bibs will not be issued to anyone who fails to meet the requirements set by the organizers. After collecting the bib at the designated location, runners may pick up their T-shirt on a first-come, first-served basis, subject to size availability.</p>
+          <p><a href="https://www.mitjamarato.barcelona/soy-corredor-a/reglamento/#articulo-10"><strong>Article 10</strong></a></p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can I collect my race number on the day of the race?</summary>
+        <div class="faq-answer">
+          <p><strong>No.</strong> The established schedules are as follows: Thursday 11/02 from 3 PM to 8 PM, Friday 12/02 from 2 PM to 8 PM, and Saturday 13/02 from 10 AM to 8 PM.</p>
+          <p>*For more information, click on this <a href="https://www.mitjamarato.barcelona/en/i-am-a-runner/bib-number-pick-up/">link</a>.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="faq-actions">
+      <a href="https://www.mitjamarato.barcelona/en/i-am-a-runner/frequently-asked-questions/" class="btn-primary">
+        <svg class="arrow-svg" viewBox="0 0 32 32"><path d="M 21.1875 9.28125 L 19.78125 10.71875 L 24.0625 15 L 4 15 L 4 17 L 24.0625 17 L 19.78125 21.28125 L 21.1875 22.71875 L 27.90625 16 Z"/></svg>
+        Go to FAQs
+      </a>
+      <button class="btn-chat" onclick="alert('Chat support available on the official site')">
+        <svg class="arrow-svg" viewBox="0 0 512 512"><path d="M144 208c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32zm112 0c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32zm112 0c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32zM256 32C114.6 32 0 125.1 0 240c0 47.6 19.9 91.2 52.9 126.3C38 405.7 7 439.1 6.5 439.5c-6.6 7-8.4 17.2-4.6 26S14.4 480 24 480c61.5 0 110-25.7 139.1-46.3C192 442.8 223.2 448 256 448c141.4 0 256-93.1 256-208S397.4 32 256 32zm0 368c-26.7 0-53.1-4.1-78.4-12.1l-22.7-7.2-19.5 13.8c-14.3 10.1-33.9 21.4-57.5 29 7.3-12.1 14.4-25.7 19.9-40.2l10.6-28.1-20.6-21.8C69.7 314.1 48 282.2 48 240c0-88.2 93.3-160 208-160s208 71.8 208 160-93.3 160-208 160z"/></svg>
+        Help chat
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== APP DOWNLOAD BANNER ===== -->
+<section class="app-banner">
+  <div class="app-banner-inner">
+    <div>
+      <h2>Experience the Hyundai Barcelona Half Marathon by Brooks live with our app</h2>
+      <h3>Through our mobile application, you can follow your friends and/or family live, kilometer by kilometer.</h3>
+      <div class="app-store-btns">
+        <a href="https://apps.apple.com/us/app/mitja-marat%C3%B3-barcelona/id1588259719" target="_blank">
+          <img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/app-store.webp" alt="Download on App Store" onerror="this.style.display='none'">
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.sportmaniac_live_app_android.mitja_bcn&hl=es" target="_blank">
+          <img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/google-play.webp" alt="Get it on Google Play" onerror="this.style.display='none'">
+        </a>
+      </div>
+    </div>
+    <div class="app-banner-visual">
+      <div class="app-phone-mockup">📱</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SPONSORS SECTION ===== -->
+<section class="sponsors-footer">
+  <div class="sponsors-footer-inner">
+
+    <div class="sponsor-category">
+      <p class="sponsor-category-title">Title Sponsor</p>
+      <div class="sponsor-divider"></div>
+      <div class="sponsor-logos">
+        <a href="https://www.hyundai.com/es/es.html" target="_blank">
+          <img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/logo-hunday-title-sponsor.jpg" alt="Hyundai" onerror="this.style.display='none'">
+        </a>
+      </div>
+    </div>
+
+    <div class="sponsor-category">
+      <p class="sponsor-category-title">Main Sponsor</p>
+      <div class="sponsor-divider"></div>
+      <div class="sponsor-logos">
+        <a href="https://www.brooksrunning.com/es" target="_blank">
+          <img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/logo-brooks-main-sponsor.jpg" alt="Brooks" onerror="this.style.display='none'">
+        </a>
+      </div>
+    </div>
+
+    <div class="sponsor-category">
+      <p class="sponsor-category-title">Organizer</p>
+      <div class="sponsor-divider"></div>
+      <div class="sponsor-logos">
+        <a href="https://ajuntament.barcelona.cat/esports/es" target="_blank">
+          <img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/logo-barcelona-organizer.jpg" alt="Barcelona" onerror="this.style.display='none'">
+        </a>
+        <a href="https://rpmsports.es/" target="_blank">
+          <img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/LOGO-CON-CLAIM-03-scaled.png" alt="RPM Sports" onerror="this.style.display='none'">
+        </a>
+      </div>
+    </div>
+
+    <div class="sponsor-category">
+      <p class="sponsor-category-title">Official Sponsor</p>
+      <div class="sponsor-divider"></div>
+      <div class="sponsor-logos">
+        <a href="https://www.finisher.es/" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/FINISHER_2026_page-0001-1024x540.jpg" alt="Finisher" onerror="this.style.display='none'"></a>
+        <a href="https://www.zoi.tech/es" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/logo-zoi-partner.jpg" alt="Zoi" onerror="this.style.display='none'"></a>
+        <a href="https://www.i-run.es/" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/irun-ES-darkbluegreyBG-RVB-300x100-1.png" alt="i-Run" onerror="this.style.display='none'"></a>
+        <a href="https://www.deloitte.com/es/es.html" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/deloitte.webp" alt="Deloitte" onerror="this.style.display='none'"></a>
+        <a href="https://www.yamaha-motor.eu/es/es/home/" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/2025_YAM_YamahaLogo_Red_flat_JP_LSC_RGB-1024x220.png" alt="Yamaha" onerror="this.style.display='none'"></a>
+        <a href="https://inversusgroup.es/" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/INVERSUS-VECTORIZADO-1024x301.webp" alt="Inversus" onerror="this.style.display='none'"></a>
+      </div>
+    </div>
+
+    <div class="sponsor-category">
+      <p class="sponsor-category-title">Sustainable Official Provisioning</p>
+      <div class="sponsor-divider"></div>
+      <div class="sponsor-logos">
+        <a href="https://www.aiguesdebarcelona.cat/es/aigues-de-barcelona" target="_blank">
+          <img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/Aigues-de-Barcelona-Color-scaled.png" alt="Aigues de Barcelona" onerror="this.style.display='none'">
+        </a>
+      </div>
+    </div>
+
+    <div class="sponsor-category">
+      <p class="sponsor-category-title">Media Partner</p>
+      <div class="sponsor-divider"></div>
+      <div class="sponsor-logos">
+        <a href="https://www.lavanguardia.com/" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/LV_LOGO_RGB-1536x233.png" alt="La Vanguardia" onerror="this.style.display='none'"></a>
+        <a href="https://www.mundodeportivo.com/" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/LOGO-Mundodeportivo-300x145-1.png" alt="Mundo Deportivo" onerror="this.style.display='none'"></a>
+        <a href="https://www.rac1.cat/" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/rac1-removebg-preview-1-300x152-1.png" alt="RAC1" onerror="this.style.display='none'"></a>
+        <a href="https://beteve.cat/" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/logotip_beteve_roig_rgb-300x82.png" alt="Betevé" onerror="this.style.display='none'"></a>
+      </div>
+    </div>
+
+    <div class="sponsor-category">
+      <p class="sponsor-category-title">Official Supplier</p>
+      <div class="sponsor-divider"></div>
+      <div class="sponsor-logos">
+        <a href="https://bikkoa.com/" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/logo-bikkoa-partner.jpg" alt="Bikkoa" onerror="this.style.display='none'"></a>
+        <a href="https://www.oakberry.com/es-ES" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/ametller-1-150x150-1.jpg" alt="Oakberry" onerror="this.style.display='none'"></a>
+        <a href="https://vithas.es/" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/logo-vithas-1-300x96-1.png" alt="Vithas" onerror="this.style.display='none'"></a>
+        <a href="https://ecotic.es/" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/ECOTIC__ENVASES-1024x487.webp" alt="Ecotic" onerror="this.style.display='none'"></a>
+        <a href="https://www.tmb.cat" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/TMB-logo-1-1.png" alt="TMB" onerror="this.style.display='none'"></a>
+        <a href="https://www.bruguer.es/" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/BRG_VENALCOLOR_Vectorizado-scaled.png" alt="Bruguer" onerror="this.style.display='none'"></a>
+        <a href="https://web.runna.com/welcome" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/Wordmark-black-1-1024x323.webp" alt="Runna" onerror="this.style.display='none'"></a>
+        <a href="https://circuitonacionalrunning.es/" target="_blank"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/circuito_nacional_running_platano_canarias_2.png" alt="Circuito Nacional Running" onerror="this.style.display='none'"></a>
+      </div>
+    </div>
+
+    <!-- Sponsorship contact -->
+    <div class="sponsor-contact">
+      <p>If you would like more information about our sponsorship options, please contact us.</p>
+      <a href="mailto:sponsorship@rpmsports.es" class="btn-primary">
+        <svg class="arrow-svg" viewBox="0 0 32 32"><path d="M 21.1875 9.28125 L 19.78125 10.71875 L 24.0625 15 L 4 15 L 4 17 L 24.0625 17 L 19.78125 21.28125 L 21.1875 22.71875 L 27.90625 16 Z"/></svg>
+        Contact
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== SITE FOOTER ===== -->
+<footer class="site-footer">
+  <!-- Newsletter -->
+  <div style="max-width:var(--max-w); margin:0 auto 48px; padding:0 0 48px; border-bottom:1px solid rgba(255,255,255,0.1);">
+    <div style="background:var(--accent); border-radius:12px; padding:40px 32px; display:flex; flex-wrap:wrap; gap:32px; align-items:center; justify-content:space-between;">
+      <div>
+        <h3 style="color:white; font-size:18px; margin-bottom:6px;">Subscribe and receive all the news in your email!</h3>
+        <p style="color:rgba(255,255,255,0.8); font-size:13px;">Stay updated with the latest Mitja Marató Barcelona news.</p>
+      </div>
+      <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+        <input type="email" placeholder="Your email address" required aria-label="Email">
+        <button type="submit">SUBSCRIBE!</button>
+      </form>
+      <p class="newsletter-consent" style="width:100%; color:rgba(255,255,255,0.7); font-size:12px;">
+        By subscribing you accept the <a href="https://www.mitjamarato.barcelona/en/privacy-policy/" style="color:white;">privacy policy</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer columns -->
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#"><img src="https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/logo-negre.svg" alt="Mitja Marató Barcelona" onerror="this.src='https://www.mitjamarato.barcelona/wp-content/uploads/2025/10/logo-hunday-mitjamaratobarcelona-bybrooks-g.png'; this.style.filter='brightness(0) invert(1)'"></a>
+      <address>
+        <svg viewBox="0 0 384 512"><path d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0z"/></svg>
+        Ave. Diagonal, 477 Floor 16<br>08036, Barcelona (Spain)
+      </address>
+    </div>
+    <div class="footer-col">
+      <h4>The race</h4>
+      <ul>
+        <li><a href="https://www.mitjamarato.barcelona/en/our-identity/">Our identity</a></li>
+        <li><a href="https://www.mitjamarato.barcelona/en/event/visit-barcelona/">Visit Barcelona</a></li>
+        <li><a href="https://www.mitjamarato.barcelona/en/press/">Press</a></li>
+        <li><a href="https://www.mitjamarato.barcelona/en/news/">News</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Runner info</h4>
+      <ul>
+        <li><a href="course.html">Course</a></li>
+        <li><a href="regulation.html">Regulation</a></li>
+        <li><a href="results.html">Results</a></li>
+        <li><a href="change-owner.html">Change Owner</a></li>
+        <li><a href="manage-registration.html">Manage Registration</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal & Contact</h4>
+      <ul>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="parunda.html">PaRunda by Brooks</a></li>
+        <li><a href="https://www.mitjamarato.barcelona/en/privacy-policy/">Privacy policy</a></li>
+        <li><a href="https://www.mitjamarato.barcelona/en/legal-notice/">Legal notice</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer bottom -->
+  <div class="footer-bottom">
+    <p>&copy; 2027 Hyundai Mitja Marató Barcelona by Brooks. All rights reserved.</p>
+    <div class="footer-social">
+      <a href="https://twitter.com/mitjabarcelona" target="_blank" aria-label="X/Twitter">
+        <svg viewBox="0 0 512 512"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+      </a>
+      <a href="https://www.facebook.com/mitjamaratobarcelona" target="_blank" aria-label="Facebook">
+        <svg viewBox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/mitjabarcelona/" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+      </a>
+      <a href="https://www.youtube.com/user/mitjabarcelona" target="_blank" aria-label="YouTube">
+        <svg viewBox="0 0 576 512"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+      </a>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.mitjamarato.barcelona/en/privacy-policy/">Privacy</a>
+      <a href="https://www.mitjamarato.barcelona/en/cookies-policy/">Cookies</a>
+      <a href="https://www.mitjamarato.barcelona/en/legal-notice/">Legal</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+  // ---- Hero Carousel ----
+  let currentSlide = 0;
+  const totalSlides = 2;
+  const slidesEl = document.getElementById('heroSlides');
+  const dots = document.querySelectorAll('.carousel-dot');
+
+  function goToSlide(n) {
+    currentSlide = (n + totalSlides) % totalSlides;
+    slidesEl.style.transform = `translateX(-${currentSlide * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+  }
+
+  function changeSlide(dir) { goToSlide(currentSlide + dir); }
+
+  // Auto-advance
+  let autoPlay = setInterval(() => changeSlide(1), 5000);
+  document.querySelector('.hero-carousel').addEventListener('mouseenter', () => clearInterval(autoPlay));
+  document.querySelector('.hero-carousel').addEventListener('mouseleave', () => {
+    autoPlay = setInterval(() => changeSlide(1), 5000);
+  });
+
+  // ---- Keyboard navigation for carousel ----
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') changeSlide(-1);
+    if (e.key === 'ArrowRight') changeSlide(1);
+  });
+
+  // ---- Touch swipe support ----
+  let touchStartX = 0;
+  const carousel = document.querySelector('.hero-carousel');
+  carousel.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+  carousel.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].screenX;
+    if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
+  }, { passive: true });
+
+  // ---- Close mobile nav on outside click ----
+  document.addEventListener('click', (e) => {
+    const nav = document.getElementById('mobileNav');
+    if (nav.classList.contains('open') && !nav.contains(e.target) && !e.target.closest('.hamburger')) {
+      nav.classList.remove('open');
+    }
+  });
+
+  // ---- Scroll-reveal animation ----
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.news-card, .content-box, .feel-beat-content, .faq-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+  // ---- Back to top button ----
+  const backToTopBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      backToTopBtn.classList.add('visible');
+    } else {
+      backToTopBtn.classList.remove('visible');
+    }
+  }, { passive: true });
+</script>
+
+<!-- Back to top button -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+    <path d="M12 4l-8 8h5v8h6v-8h5z"/>
+  </svg>
+</button>
+
+</body>
+</html>
+
